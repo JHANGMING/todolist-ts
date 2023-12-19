@@ -14,7 +14,9 @@ export const todoSlice=createSlice({
 	name:"todo",
   initialState,
   reducers:{
-    
+    setTodoTab(state,action){
+      return {...state,tab:action.payload}
+    },
     setTodoData(state,action){
       return {...state,data:action.payload}
     },
@@ -22,5 +24,5 @@ export const todoSlice=createSlice({
   }
 })
 
-export const {setTodoData}=todoSlice.actions;
+export const {setTodoTab,setTodoData}=todoSlice.actions;
 export default todoSlice.reducer; 

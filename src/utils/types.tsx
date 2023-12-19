@@ -11,6 +11,11 @@ export interface authData{
   nickname:string,
   token:string,
 }
+export interface TodoData{
+  id:string;
+  status:boolean;
+  content:string
+}
 export interface initialData{
   data:TodoData[];
   filterData:TodoData[]

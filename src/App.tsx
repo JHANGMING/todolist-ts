@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import LogIn from "./components/Login";
 import SignIn from "./components/SignIn";
 import NotFound from "./components/NotFound";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Todo from "./pages/Todo";
 function App() {
 
   return (
@@ -12,6 +14,9 @@ function App() {
       <Route path="/" element={<Home />}>
         <Route index element={<LogIn />}/>
         <Route path="sign" element={<SignIn />}/>
+      </Route>
+      <Route element={<ProtectedRoutes />}>
+        <Route path="todo" element={<Todo />}/>
       </Route>
       <Route path="*" element={<NotFound/>}/>
   </Routes>

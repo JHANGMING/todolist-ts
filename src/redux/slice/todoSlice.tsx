@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialData } from "../../utils/types";
+import { TodoData, initialData } from "../../utils/types";
 
 
 const initialState:initialData={
@@ -20,9 +20,25 @@ export const todoSlice=createSlice({
     setTodoData(state,action){
       return {...state,data:action.payload}
     },
-   
+   setTodofilter(state,action){
+      const {data,tab}=action.payload
+      const newdata=data.filter((item:TodoData)=>{
+        if(tab==="todo"){
+          return item.status===false
+        }else if(tab==="done"){
+          return item.status!==false
+        }else{
+          return item
+        }
+      })
+      return {...state,filterData:newdata}
+    },
+    setEditData(state,action){
+      const {id,content}=action.payload;
+      return {...state,id,content}
+    }
   }
 })
 
-export const {setTodoTab,setTodoData}=todoSlice.actions;
+export const {setTodoTab,setTodoData,setTodofilter,setEditData}=todoSlice.actions;
 export default todoSlice.reducer; 

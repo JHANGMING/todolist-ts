@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorLoginMsg,LoginInput } from "./styled"
+import { ErrorLoginMsg, Errormsg, Label, LoginInput, SignupInput } from "./styled"
 import { UseFormRegister,FieldErrors,RegisterOptions} from "react-hook-form";
 
 export const LogInput:React.FC<InputsConfig>=({id,type,labelText,register,rules,errors})=>{
@@ -10,7 +10,16 @@ export const LogInput:React.FC<InputsConfig>=({id,type,labelText,register,rules,
     </>
   )
 }
+export const SignInput:React.FC<InputsConfig>=({id,type,labelText,errors,register,rules})=>{
 
+  return(
+    <>
+    <Label htmlFor={id}>{labelText}</Label>
+    {errors && id in errors && <Errormsg>{errors[id]?.message}</Errormsg>}
+    <SignupInput type={type} id={id} placeholder={id} {...(register && register(id, rules))}/>
+    </>
+  )
+}
 
 export interface FormValues {
   email: string;
